@@ -4,7 +4,8 @@ import './App.css'
 import { Header } from './components/Header'
 import {Provider} from 'react-redux'
 import { store } from './service/store'
-import { Filter } from './components/Filter'
+import { Table } from './components/Table'
+import { VerifyFilter } from './components/VerifyFilter'
 
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       <BrowserRouter>
         <Provider store={store}>
           <Header />
-          <Filter/>
+          <VerifyFilter/>
+          <Table/>
         </Provider>
       </BrowserRouter>
     </div>
