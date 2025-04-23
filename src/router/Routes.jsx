@@ -1,5 +1,14 @@
-import { Route } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
+import { Auth } from "../components/Auth";
+import { TablePage } from "../pages/TablePage";
 
-export const Routes = () =>{
-    <Route></Route>
-}
+export const RoutesComponent = () => {
+  return (
+    <div>
+      <Routes>
+        <Route path="/" element={<Auth />}></Route>
+        <Route path="/table" element={<TablePage />}></Route>
+      </Routes>
+    </div>
+  );
+};

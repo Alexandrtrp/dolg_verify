@@ -9,35 +9,34 @@ export const VerifyFilter = () => {
   const filter = useSelector((state) => state.getData.filterType);
 
   const blackButton = {
-    backgroundColor: filter === null ? "black" : "white",
+    backgroundColor: filter === null ? "#212121" : "white",
     color: filter === null ? "white" : "#1976d2",
   };
 
   const greenButton = {
-    backgroundColor: filter === "verify" ? "#00CC00" : "white",
-    color: filter === "verify" ? "black" : "#1976d2",
+    backgroundColor: filter === "verify" ? "#4caf50" : "white",
+    color: filter === "verify" ? "white" : "#1976d2",
   };
 
   const redButton = {
-    backgroundColor: filter === "delete" ? "#FF0000" : "white",
-    color: filter === "delete" ? "black" : "#1976d2",
+    backgroundColor: filter === "delete" ? "#d32f2f" : "white",
+    color: filter === "delete" ? "white" : "#1976d2",
   };
 
   const greyButton = {
-    backgroundColor: filter === "new" ? "grey" : "white",
-    color: filter === "new" ? "black" : "#1976d2",
+    backgroundColor: filter === "new" ? "#757575" : "white",
+    color: filter === "new" ? "white" : "#1976d2",
   };
 
   const blueButton = {
-    backgroundColor: filter === "changed" ? "blue" : "white",
-    color: filter === "changed" ? "black" : "#1976d2",
+    backgroundColor: filter === "changed" ? "#1976d2" : "white",
+    color: filter === "changed" ? "white" : "#1976d2",
   };
 
   return (
     <div className="flex gap-6  m-12">
       <Button
-      style={blackButton}
-        sx={{ textTransform: "none" }}
+        sx={{ textTransform: "none", ...blackButton }}
         variant="outlined"
         onClick={() => {
           dispatch(addFilter(null));
@@ -46,8 +45,7 @@ export const VerifyFilter = () => {
         Все записи
       </Button>
       <Button
-        style={greenButton}
-        sx={{ textTransform: "none" }}
+        sx={{ textTransform: "none", ...greenButton }}
         variant="outlined"
         onClick={() => {
           dispatch(addFilter("verify"));
@@ -55,19 +53,19 @@ export const VerifyFilter = () => {
       >
         Верифицированные
       </Button>
-      <Button
-        style={redButton}
-        sx={{ textTransform: "none" }}
+
+      {/* фильтр для удаленных строк */}
+      {/* <Button
+        sx={{ textTransform: "none", ...redButton }}
         variant="outlined"
         onClick={() => {
           dispatch(addFilter("delete"));
         }}
       >
         Удаленные
-      </Button>
+      </Button> */}
       <Button
-        style={blueButton}
-        sx={{ textTransform: "none" }}
+        sx={{ textTransform: "none", ...blueButton }}
         variant="outlined"
         onClick={() => {
           dispatch(addFilter("changed"));
@@ -76,8 +74,7 @@ export const VerifyFilter = () => {
         Новые
       </Button>
       <Button
-        style={greyButton}
-        sx={{ textTransform: "none" }}
+        sx={{ textTransform: "none", ...greyButton }}
         variant="outlined"
         onClick={() => {
           dispatch(addFilter("new"));
