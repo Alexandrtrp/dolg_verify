@@ -75,19 +75,16 @@ export const Table = () => {
       headerName: "1. Федеральный округ основного должника",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "2",
       headerName: "2. Субъект РФ основного должника ",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "3",
       headerName: "3. Наименование основного должника",
-      filterOperators: null,
       width: 110,
       editable: true,
     },
@@ -96,27 +93,12 @@ export const Table = () => {
       headerName: "4. ИНН основного должника",
       editable: true,
       width: 160,
-      filterOperators: [
-        {
-          value: "contains",
-          getApplyFilterFn: (filterItem) => {
-            if (!filterItem.value) return null;
-            return (params) =>
-              params.value
-                ?.toString()
-                .toLowerCase()
-                .includes(filterItem.value.toLowerCase());
-          },
-          InputComponent: CustomFilterInputValue,
-        },
-      ],
     },
     {
       field: "5",
       headerName: "5. Механизм взыскания",
       width: 150,
       editable: true,
-      filterOperators: null,
       type: "singleSelect",
       valueOptions: [
         "1 - субсидиарная ответственность ",
@@ -132,21 +114,18 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "7",
       headerName: "7. Размер иска тыс. руб.",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "8",
       headerName: "8. Заявитель по иску",
       width: 150,
       editable: true,
-      filterOperators: null,
       type: "singleSelect",
       valueOptions: [
         "1 - ФНС России ",
@@ -160,7 +139,7 @@ export const Table = () => {
       headerName: "9. Отзыв ФНС России на иск направлен в суд ",
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: [
         "1 - направлен",
@@ -176,7 +155,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "11",
@@ -184,7 +162,6 @@ export const Table = () => {
         "11. Размер задолженности перед ФНС России (РТК + текущие платежи + заявленная, но не рассмотренная + списанная задолженность), тыс. руб. ",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "12",
@@ -193,7 +170,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "13",
@@ -201,7 +177,6 @@ export const Table = () => {
         "11.2. Размер текущей задолженности перед ФНС России, тыс. руб. ",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "14",
@@ -210,7 +185,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "15",
@@ -218,7 +192,6 @@ export const Table = () => {
         "11.4. Размер списанной задолженности перед ФНС России, тыс. руб. ",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "16",
@@ -226,7 +199,7 @@ export const Table = () => {
         "12. Наличие соответствующего пользовательского задания в ПП СКУАД",
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: ["1 - Да", "2 - Нет"],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
@@ -236,7 +209,7 @@ export const Table = () => {
       headerName: "13. Итог отработки пользовательского задания в ПП СКУАД",
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: [
         "1 - Подготовить заявление на привлечение к СО",
@@ -252,7 +225,7 @@ export const Table = () => {
       headerName: "14. Фактическое принятие мер",
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: ["1 - Да", "2 - Нет"],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
@@ -263,21 +236,18 @@ export const Table = () => {
         "15. ФИО (наименование) ответчика в пользовательском задании в ПП СКУАД",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "20",
       headerName: "16. ИНН ответчика  в пользовательском задании в ПП СКУАД",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "21",
       headerName: "17. Наименование процедуры банкротства основного должника",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "22",
@@ -285,7 +255,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "23",
@@ -294,14 +263,12 @@ export const Table = () => {
       width: 150,
       type: "date",
       editable: true,
-      filterOperators: null,
     },
     {
       field: "24",
       headerName: "20. Номер дела о банкротстве основного должника",
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "25",
@@ -310,7 +277,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "26",
@@ -318,7 +284,7 @@ export const Table = () => {
         "22. Актуальный статус рассмотрения обращения ТНО правоохранительными органами",
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: [
         "1 - уголовное дело возбуждено",
@@ -333,14 +299,13 @@ export const Table = () => {
       width: 150,
       type: "date",
       editable: true,
-      filterOperators: null,
     },
     {
       field: "28",
       headerName: `24. Причины отказа в возбуждении уголовного дела, прекращения дела, уголовного преследования `,
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: [
         "1 - отсутствие события преступления",
@@ -358,7 +323,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "30",
@@ -366,7 +330,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "31",
@@ -374,7 +337,7 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: [
         "1 - вынесен обвинительный приговор",
@@ -391,7 +354,7 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: ["1 - Да", "2 - Нет"],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
@@ -403,7 +366,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "34",
@@ -412,7 +374,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "35",
@@ -421,7 +382,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "36",
@@ -430,21 +390,18 @@ export const Table = () => {
       width: 150,
       type: "date",
       editable: true,
-      filterOperators: null,
     },
     {
       field: "37",
       headerName: `32. ФИО (наименование) ответчика `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "38",
       headerName: `33. ИНН ответчика`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "39",
@@ -452,7 +409,7 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: [
         "1 - обеспечительные меры приняты",
@@ -467,14 +424,13 @@ export const Table = () => {
       headerName: `35. Стоимость активов ответчиков, в отношении которых приняты обеспечительные меры, тыс. руб.`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "41",
       headerName: `35.1. Факт принятия обеспечительных мер на банковские счета ответчика`,
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: ["1 - Да", "2 - Нет"],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
@@ -484,21 +440,18 @@ export const Table = () => {
       headerName: `35.2. Стоимость транспортных средств ответчиков, в отношении которых приняты обеспечительные меры, тыс. руб.`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "43",
       headerName: `35.3. Стоимость недвижимого имущества ответчиков, в отношении которых приняты обеспечительные меры, тыс. руб.`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "44",
       headerName: `35.4. Стоимость иного имущества, на которое приняты обеспечительные меры, тыс. руб.`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "45",
@@ -506,21 +459,19 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "46",
       headerName: `37. Лицо, направившее на исполнение судебный акт/исполнительный лист`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "47",
       headerName: `38. Статус рассмотрения иска`,
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: [
         // ...Object.values(UIMap)
@@ -541,7 +492,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "49",
@@ -550,7 +500,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "50",
@@ -558,7 +507,7 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
+
       type: "singleSelect",
       valueOptions: ["1 - солидарная", "2 - долевая", "3 - персональная"],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
@@ -569,7 +518,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "52",
@@ -577,7 +525,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "53",
@@ -585,7 +532,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "54",
@@ -594,7 +540,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "55",
@@ -602,7 +547,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "56",
@@ -611,7 +555,6 @@ export const Table = () => {
       width: 150,
       type: "date",
       editable: true,
-      filterOperators: null,
     },
     {
       field: "57",
@@ -620,7 +563,6 @@ export const Table = () => {
       width: 150,
       type: "date",
       editable: true,
-      filterOperators: null,
     },
     {
       field: "58",
@@ -628,7 +570,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "59",
@@ -637,7 +578,6 @@ export const Table = () => {
       width: 150,
       type: "date",
       editable: true,
-      filterOperators: null,
     },
     {
       field: "60",
@@ -646,7 +586,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "61",
@@ -655,7 +594,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "62",
@@ -663,7 +601,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "63",
@@ -671,7 +608,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "64",
@@ -679,7 +615,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "65",
@@ -687,7 +622,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "66",
@@ -695,7 +629,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "67",
@@ -703,7 +636,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "67",
@@ -711,7 +643,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "69",
@@ -720,7 +651,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "70",
@@ -729,7 +659,6 @@ export const Table = () => {
       width: 150,
       editable: true,
       type: "date",
-      filterOperators: null,
     },
     {
       field: "71",
@@ -737,7 +666,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "72",
@@ -745,7 +673,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "73",
@@ -753,7 +680,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "74",
@@ -761,7 +687,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "75",
@@ -769,7 +694,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "76",
@@ -777,7 +701,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "77",
@@ -785,7 +708,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "78",
@@ -793,7 +715,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "79",
@@ -801,7 +722,6 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "80",
@@ -809,194 +729,167 @@ export const Table = () => {
   `,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "81",
       headerName: `ФЛК 72`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "82",
       headerName: `ФЛК 73`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "83",
       headerName: `ФЛК 74`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "84",
       headerName: `ФЛК 75`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "85",
       headerName: `ФЛК 76`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "86",
       headerName: `ФЛК 77`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "87",
       headerName: `ФЛК 78`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "88",
       headerName: `ФЛК 79`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "89",
       headerName: `ФЛК 80`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "90",
       headerName: `ФЛК 81`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "91",
       headerName: `ФЛК 82`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "92",
       headerName: `ФЛК 83`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "93",
       headerName: `ФЛК 84`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "94",
       headerName: `ФЛК 85`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "95",
       headerName: `ФЛК 86`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "96",
       headerName: `ФЛК 87`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "97",
       headerName: `ФЛК 88`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "98",
       headerName: `ФЛК 89`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "99",
       headerName: `ФЛК 90`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "100",
       headerName: `ФЛК 91`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "101",
       headerName: `ФЛК 92`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "102",
       headerName: `ФЛК 93`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "103",
       headerName: `ФЛК 94`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "104",
       headerName: `ФЛК 95`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "105",
       headerName: `ФЛК 96`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
     {
       field: "106",
       headerName: `Контрольный ФЛК`,
       width: 150,
       editable: true,
-      filterOperators: null,
     },
   ];
 
   return (
-    <Box sx={{ height: 400, width: "100%", padding: "15px" }}>
+    <Box sx={{ height: '100vh', width: "100%", padding: "25px" }}>
       <AddRow />
       <DataGrid
         rows={filter ? filterData : tableData}
@@ -1004,14 +897,14 @@ export const Table = () => {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 10,
+              pageSize: 25,
             },
           },
         }}
         pageSizeOptions={[5]}
         disableRowSelectionOnClick
         localeText={{
-          ...ruRU.components.MuiDataGrid.defaultProps.localeText
+          ...ruRU.components.MuiDataGrid.defaultProps.localeText,
         }}
       />
     </Box>
