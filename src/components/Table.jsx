@@ -63,13 +63,13 @@ export const Table = () => {
       field: "1",
       headerName: "1. Федеральный округ основного должника",
       width: 150,
-      editable: false,
+      editable: true,
     },
     {
       field: "2",
       headerName: "2. Субъект РФ основного должника ",
       width: 150,
-      editable: false,
+      editable: true,
     },
     {
       field: "3",
