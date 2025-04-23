@@ -9,24 +9,13 @@ import { ruRU } from "@mui/x-data-grid/locales";
 import { useDispatch, useSelector } from "react-redux";
 import { AddRow } from "./AddRow";
 import { changeRowStatus } from "../service/getData";
+import { VerifyFilter } from "./VerifyFilter";
 
 export const Table = () => {
   const tableData = useSelector((state) => state.getData.tableData);
   const filter = useSelector((state) => state.getData.filterType);
   const filterData = useSelector((state) => state.getData.filterData);
   const dispatch = useDispatch();
-
-  const CustomFilterInputValue = (props) => {
-    return (
-      <GridFilterInputValue
-        {...props}
-        InputProps={{
-          ...props.InputProps,
-          placeholder: "Введите значение...",
-        }}
-      />
-    );
-  };
 
   const columns = [
     {
@@ -74,13 +63,13 @@ export const Table = () => {
       field: "1",
       headerName: "1. Федеральный округ основного должника",
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: "2",
       headerName: "2. Субъект РФ основного должника ",
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: "3",
@@ -889,8 +878,11 @@ export const Table = () => {
   ];
 
   return (
-    <Box sx={{ height: '100vh', width: "100%", padding: "25px" }}>
-      <AddRow />
+    <Box sx={{ height: "80vh", width: "100%", padding: "25px" }}>
+      <Box sx={{ display: "flex", justifyContent: "space-between", margin: '20px 0' }}>
+        <AddRow />
+        <VerifyFilter />
+      </Box>
       <DataGrid
         rows={filter ? filterData : tableData}
         columns={columns}

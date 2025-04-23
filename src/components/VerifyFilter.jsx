@@ -34,7 +34,7 @@ export const VerifyFilter = () => {
   };
 
   return (
-    <div className="flex gap-6  m-12">
+    <div className="flex gap-6">
       <Button
         sx={{ textTransform: "none", ...blackButton }}
         variant="outlined"

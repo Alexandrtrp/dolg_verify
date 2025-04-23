@@ -6,7 +6,7 @@ export const TablePage = () =>{
       return (
         <div className="flex flex-col items-center">
           <Header />
-          <VerifyFilter />
+          {/* <VerifyFilter /> */}
           <Table />
         </div>
       );
