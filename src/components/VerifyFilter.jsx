@@ -1,10 +1,10 @@
 import { Button, colors } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFilter } from "../service/getData";
 
 export const VerifyFilter = () => {
-  // const [filter, setfilter] = useState(null);
+  
   const dispatch = useDispatch();
   const filter = useSelector((state) => state.getData.filterType);
 
@@ -16,11 +16,6 @@ export const VerifyFilter = () => {
   const greenButton = {
     backgroundColor: filter === "verify" ? "#4caf50" : "white",
     color: filter === "verify" ? "white" : "#1976d2",
-  };
-
-  const redButton = {
-    backgroundColor: filter === "delete" ? "#d32f2f" : "white",
-    color: filter === "delete" ? "white" : "#1976d2",
   };
 
   const greyButton = {

@@ -17,11 +17,11 @@ export const Table = () => {
   const filterData = useSelector((state) => state.getData.filterData);
   const dispatch = useDispatch();
 
-  const changeCell = {
-    renderCell: (params) => (
-      <div onClick={() => console.log(1)}>{params.value}</div>
-    ),
-  };
+  // const changeCell = {
+  //   renderCell: (params) => (
+  //     <div onClick={() => console.log(1)}>{params.value}</div>
+  //   ),
+  // };
 
   const columns = [
     {
@@ -111,6 +111,12 @@ export const Table = () => {
       type: "date",
     },
     {
+      field: "6.1",
+      headerName: "6.1. Дата направления иска в суд",
+      width: 150,
+      editable: true,
+    },
+    {
       field: "7",
       headerName: "7. Размер иска тыс. руб.",
       width: 150,
@@ -143,14 +149,22 @@ export const Table = () => {
       ],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
+    // не готов, доделать 10 филд
+    ///
+    ///
+    ///
+    ///
     {
       field: "10",
       headerName:
         "10. Основание (для СО - ст.ст. 61.11, 61.12 Закона о банкротстве, для ГИ - ст. УК РФ по ВУД)",
       width: 150,
       editable: true,
-      type: "date",
+      type: "singleSelect",
+      valueOptions: ["1 - ", "2 - ", "3 - "],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
+
     {
       field: "11",
       headerName:
@@ -320,16 +334,8 @@ export const Table = () => {
       type: "date",
     },
     {
-      field: "30",
-      headerName: "Дата судебного акта о правопреемстве",
-      width: 150,
-      editable: true,
-      type: "date",
-    },
-    {
       field: "31",
-      headerName: `26. Результат рассмотрения уголовного дела в суде 
-  `,
+      headerName: `26. Результат рассмотрения уголовного дела в суде `,
       width: 150,
       editable: true,
 
@@ -348,23 +354,20 @@ export const Table = () => {
         "27. Вывод налогового органа об исчерпании или объективной невозможности реализации механизмов удовлетворения налоговых требований за счет самого налогоплательщика - должника (постановление КС РФ №39-П, ВС РФ №18-КГ21-71-КЧ",
       width: 150,
       editable: true,
-      type: "date",
-
       type: "singleSelect",
       valueOptions: ["1 - Да", "2 - Нет"],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "33",
-      headerName: `28. Дата направления налоговым органом ходатайства о приостановлении производства по гражданскому иску (Постановление КС РФ №39-П) 
-  `,
+      headerName: `28. Дата направления налоговым органом ходатайства о приостановлении производства по гражданскому иску `,
       width: 150,
       editable: true,
       type: "date",
     },
     {
       field: "34",
-      headerName: `29. Дата приостановки производства по гражданскому иску (ДД.ММ.ГГГГ)
+      headerName: `29. Дата приостановки производства по гражданскому иску
   `,
       width: 150,
       editable: true,
@@ -372,7 +375,7 @@ export const Table = () => {
     },
     {
       field: "35",
-      headerName: `30. Дата отказа суда в приостановлении производства по гражданскому иску (ДД.ММ.ГГГГ)
+      headerName: `30. Дата отказа суда в приостановлении производства по гражданскому иску
   `,
       width: 150,
       editable: true,
@@ -388,7 +391,7 @@ export const Table = () => {
     },
     {
       field: "37",
-      headerName: `32. ФИО (наименование) ответчика `,
+      headerName: `32. ФИО (наименование ЮЛ) ответчика `,
       width: 150,
       editable: true,
     },
@@ -425,7 +428,6 @@ export const Table = () => {
       headerName: `35.1. Факт принятия обеспечительных мер на банковские счета ответчика`,
       width: 150,
       editable: true,
-
       type: "singleSelect",
       valueOptions: ["1 - Да", "2 - Нет"],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
@@ -450,7 +452,7 @@ export const Table = () => {
     },
     {
       field: "45",
-      headerName: `36. Дата направления на исполнение судебного акта/исполнительного листа на обеспечительные меры (ДД.ММ.ГГГГ)`,
+      headerName: `36. Дата направления на исполнение судебного акта/исполнительного листа на обеспечительные меры`,
       width: 150,
       editable: true,
       type: "date",
@@ -460,6 +462,15 @@ export const Table = () => {
       headerName: `37. Лицо, направившее на исполнение судебный акт/исполнительный лист`,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: [
+        "1 - уполномоченный орган",
+        "2 - суд",
+        "3 - арбитражный управляющий",
+        "4 - кредитор",
+        "5 - иное лицо",
+      ],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "47",
@@ -498,11 +509,9 @@ export const Table = () => {
     },
     {
       field: "50",
-      headerName: `41. Вид ответственности по судебному акту
-  `,
+      headerName: `41. Вид ответственности по судебному акту `,
       width: 150,
       editable: true,
-
       type: "singleSelect",
       valueOptions: ["1 - солидарная", "2 - долевая", "3 - персональная"],
       renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
@@ -523,10 +532,13 @@ export const Table = () => {
     },
     {
       field: "53",
-      headerName: `44. Избранный уполномоченным органом способ распоряжения  правом требования (1 - уступка; 2 - взыскание; 3 - продажа)
+      headerName: `44. Избранный уполномоченным органом способ распоряжения  правом требования 
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - уступка", "2 - взыскание", "3 - продажа"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "54",
@@ -545,31 +557,36 @@ export const Table = () => {
     },
     {
       field: "56",
-      headerName: `47. Дата направления исполнительного листа в ССП
-  `,
+      headerName: `47. Дата направления исполнительного листа в ССП `,
       width: 150,
       type: "date",
       editable: true,
     },
     {
       field: "57",
-      headerName: `48. Дата возбуждения исполнительного производства
-  `,
+      headerName: `48. Дата возбуждения исполнительного производства `,
       width: 150,
       type: "date",
       editable: true,
     },
     {
       field: "58",
-      headerName: `49. Стадия исполнительного производства (1 - розыск должника и (или) имущества должника; 2 - оценка имущества; 3 - реализация имущества; 4 - исполнительное производство окончено  на основании пп. 3 или пп. 4 п. 1 ст. 46 ФЗ-229; 5 - исполнительное производство окончено фактическим исполнением требований)
-  `,
+      headerName: `49. Стадия исполнительного производства`,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: [
+        "1 - розыск должника",
+        "2 - оценка имущества",
+        "3 - реализация имущества",
+        "4 - исполнительное производство окончено",
+        "5 - исполнительное производство окончено фактическим исполнением требований",
+      ],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "59",
-      headerName: `50. Дата составления протокола по ч. 8 ст. 14.13 КоАП РФ в отношении ответика
-  `,
+      headerName: `50. Дата составления протокола по ч. 8 ст. 14.13 КоАП РФ в отношении ответчика`,
       width: 150,
       type: "date",
       editable: true,
@@ -584,83 +601,103 @@ export const Table = () => {
     },
     {
       field: "61",
-      headerName: `52. Дата направления ходатайства о наложении ограничения на выезд за пределы РФ (ДД.ММ.ГГГГ)
-  `,
+      headerName: `52. Дата направления ходатайства о наложении ограничения на выезд за пределы РФ  `,
       width: 150,
       editable: true,
       type: "date",
     },
     {
       field: "62",
-      headerName: `53. Наличие ограничения на выезд за пределы РФ (только для отчетчиков - физических лиц)  (1 - да; 2 - нет) 
-  `,
+      headerName: `53. Наличие ограничения на выезд за пределы РФ    `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "63",
-      headerName: `54. Наличие транспортных средств  (1 - да; 2 - нет) 
+      headerName: `54. Наличие транспортных средств  
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "64",
-      headerName: `55. Наличие ареста на транспортные средства (1 - да; 2 - нет) 
+      headerName: `55. Наличие ареста на транспортные средства 
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "65",
-      headerName: `56. Наличие недвижимого имущества  (1 - да; 2 - нет) 
+      headerName: `56. Наличие недвижимого имущества  
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "66",
-      headerName: `57. Наличие ареста на недвижимое имущество (1 - да; 2 - нет) 
+      headerName: `57. Наличие ареста на недвижимое имущество 
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "67",
-      headerName: `58. Наличие дебиторской задолженности  (1 - да; 2 - нет) 
+      headerName: `58. Наличие дебиторской задолженности  
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "67",
-      headerName: `59. Наличие ареста на дебиторскую задолженность (1 - да; 2 - нет) 
+      headerName: `59. Наличие ареста на дебиторскую задолженность 
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "69",
-      headerName: `60. Дата ликвидации ответчика-ЮЛ из ЕГРЮЛ (ДД.ММ.ГГГГ)
-  `,
+      headerName: `60. Дата ликвидации ответчика-ЮЛ из ЕГРЮЛ  `,
       width: 150,
       editable: true,
       type: "date",
     },
     {
       field: "70",
-      headerName: `61. Дата смерти ответчика (ДД.ММ.ГГГГ)
-  `,
+      headerName: `61. Дата смерти ответчика `,
       width: 150,
       editable: true,
       type: "date",
     },
     {
       field: "71",
-      headerName: `62. Наличие наследственного дела (Да/Нет)
+      headerName: `62. Наличие наследственного дела 
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "72",
@@ -685,10 +722,13 @@ export const Table = () => {
     },
     {
       field: "75",
-      headerName: `66. Наличие процедуры банкротсва ответчика (Да/Нет)
+      headerName: `66. Наличие процедуры банкротства ответчика
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: ["1 - да", "2 - нет"],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "76",
@@ -699,10 +739,18 @@ export const Table = () => {
     },
     {
       field: "77",
-      headerName: `68. Отметка о включении права требования уполномоченного органа в реестр требований кредиторов ответчика (1 - заявление на рассмотрении; 2 - требования включены в РТК; 3 – требования включены за РТК; 4 - заявление не направлялось)
+      headerName: `68. Отметка о включении права требования уполномоченного органа в реестр требований кредиторов ответчика 
   `,
       width: 150,
       editable: true,
+      type: "singleSelect",
+      valueOptions: [
+        "1 - заявление на рассмотрении",
+        "2 - требования включены в РТК",
+        "3 - требования включены за РТК",
+        "4 - заявление не направлялось",
+      ],
+      renderEditCell: (params) => <GridEditSingleSelectCell {...params} />,
     },
     {
       field: "78",
