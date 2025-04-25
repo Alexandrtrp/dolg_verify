@@ -17,6 +17,12 @@ export const Table = () => {
   const filterData = useSelector((state) => state.getData.filterData);
   const dispatch = useDispatch();
 
+  const changeCell = {
+    renderCell: (params) => (
+      <div onClick={() => console.log(1)}>{params.value}</div>
+    ),
+  };
+
   const columns = [
     {
       field: "actions",
@@ -63,13 +69,13 @@ export const Table = () => {
       field: "1",
       headerName: "1. Федеральный округ основного должника",
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: "2",
       headerName: "2. Субъект РФ основного должника ",
       width: 150,
-      editable: true,
+      editable: false,
     },
     {
       field: "3",
@@ -877,9 +883,26 @@ export const Table = () => {
     },
   ];
 
+  // const newColumns = columns.map(col=>{
+  //   col.renderCell = (params) => (
+  //     <div onClick={() => {
+  //       console.log('1')
+  //     }}>
+  //       {params.value}
+  //     </div>
+  //   );
+  //   return col;
+  // })
+
   return (
     <Box sx={{ height: "80vh", width: "100%", padding: "25px" }}>
-      <Box sx={{ display: "flex", justifyContent: "space-between", margin: '20px 0' }}>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          margin: "20px 0",
+        }}
+      >
         <AddRow />
         <VerifyFilter />
       </Box>
