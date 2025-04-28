@@ -112,7 +112,7 @@ export const Table = () => {
     },
     {
       field: "6.1",
-      headerName: "6.1. Дата направления иска в суд",
+      headerName: "6.1. Номер дела обособленного спора",
       width: 150,
       editable: true,
     },
