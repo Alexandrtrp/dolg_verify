@@ -1,4 +1,4 @@
-import { Button, colors } from "@mui/material";
+import { Box, Button, colors } from "@mui/material";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addFilter } from "../service/getData";
@@ -29,7 +29,7 @@ export const VerifyFilter = () => {
   };
 
   return (
-    <div className="flex gap-6">
+    <Box sx={{display: 'flex', alignItems: 'center', gap: '20px'}}>
       <Button
         sx={{ textTransform: "none", ...blackButton }}
         variant="outlined"
@@ -77,6 +77,6 @@ export const VerifyFilter = () => {
       >
         Измененные
       </Button>
-    </div>
+    </Box >
   );
 };

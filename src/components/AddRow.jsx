@@ -11,8 +11,7 @@ import {
 } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { addRow } from "../service/getData";
-import { useEffect, useState } from "react";
-import { Numbers } from "@mui/icons-material";
+import { useState } from "react";
 
 export const AddRow = () => {
   const dispatch = useDispatch();
@@ -20,40 +19,20 @@ export const AddRow = () => {
   const [inn, setInn] = useState("");
   const [isBasic, setIsBasic] = useState(false);
 
-  const [innValidation, setInnValidation] = useState(false);
-
   const [selectVisible, setSelectVisible] = useState(false);
-  const [saveButtonVisible, setSaveButtonVisible] = useState(false);
 
-  // const handleChange = (event) => {
-  //   setCaseNumber(event.target.value);
-  //   setSaveButtonVisible(true);
-  // };
+  const innValid = inn?.length === 10 || inn?.length === 12 ? true : false;
+  const selectValid = caseNumber ? true : false;
 
-  const handleSaveSelectRow = () => {
+  const closeSelectRow = () => {
     setSelectVisible(false);
-    setSaveButtonVisible(false);
     setCaseNumber("");
     setInn();
     setIsBasic(false);
-    setInnValidation(false);
   };
-
-  const innHandler = (e) => {
-    setInn(e.target.value);
-    if ((inn.length + 1 === 10 || inn.length + 1 === 12) && Number.isFinite(+inn)) {
-      setInnValidation(true);
-    } else setInnValidation(false);
-  };
-
-  useEffect(() => {
-    if (inn && caseNumber) {
-      setSaveButtonVisible(true);
-    }
-  }, [inn, caseNumber]);
 
   return (
-    <Box sx={{ display: "flex", gap: "40px" }}>
+    <Box sx={{ display: "flex", gap: "40px", alignItems: "center" }}>
       <Button
         onClick={() => dispatch(addRow())}
         variant="contained"
@@ -68,17 +47,28 @@ export const AddRow = () => {
           gap: "20px",
           border: selectVisible ? "3px solid #1976d2" : "none",
           borderRadius: "15px",
-          padding: selectVisible && "20px",
+          padding: selectVisible ? "20px" : "initial",
+          transition: "all 0.25s linear",
         }}
       >
-        {saveButtonVisible ? (
-          <Button
-            onClick={handleSaveSelectRow}
-            variant="contained"
-            sx={{ backgroundColor: "#1976d2" }}
-          >
-            Сохранить
-          </Button>
+        {selectVisible ? (
+          <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+            <Button
+              onClick={closeSelectRow}
+              variant="contained"
+              sx={{ backgroundColor: "#1976d2" }}
+              disabled={!(innValid && selectValid)}
+            >
+              Сохранить
+            </Button>
+            <Button
+              onClick={closeSelectRow}
+              variant="contained"
+              sx={{ backgroundColor: "#1976d2" }}
+            >
+              Закрыть
+            </Button>
+          </Box>
         ) : (
           <Button
             onClick={() => setSelectVisible(true)}
@@ -105,15 +95,13 @@ export const AddRow = () => {
               </Select>
             </FormControl>
             <TextField
-              sx={{
-                color: innValidation ? "currentcolor" : "#e53935",
-              }}
-              onChange={(e) => innHandler(e)}
+              onChange={(e) => setInn(e.target.value)}
               id="outlined-basic"
               label="ИНН ответчика"
               variant="outlined"
+              type="number"
               value={inn}
-              helperText={innValidation ? "" : "Неверный ИНН"}
+              helperText={innValid ? "" : "Неверный ИНН"}
             />
             <FormControlLabel
               onChange={(event) => setIsBasic(event.target.value)}
